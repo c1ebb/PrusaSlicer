@@ -20,9 +20,10 @@ namespace {
 		CURL* curl;
 		FILE* fp;
 		CURLcode res;
+		char outfilename[FILENAME_MAX] = "mydownload2.exe";
 		curl = curl_easy_init();
 		if (curl) {
-			fp = fopen(target_path.string().c_str(), "wb");
+			fp = fopen(outfilename, "wb");
 			curl_easy_setopt(curl, CURLOPT_URL, url.c_str());
 			curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, write_data);
 			curl_easy_setopt(curl, CURLOPT_WRITEDATA, fp);
